@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/login", [Auth\LoginController::class, "index"])->name("show.login");
+Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
 Route::post("/login", [Auth\LoginController::class, "loginValidate"])->name("login.validate");
 
 Route::get("/register", [Auth\RegisterController::class, "index"])->name("register.show");
