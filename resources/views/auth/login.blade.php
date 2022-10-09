@@ -5,7 +5,8 @@
                 Login
             </div>
             <div style=" background:white;" class="p-5">
-                <form class="" style="width:400px;">
+                <form class="" style="width:400px;" action="{{ route('login.validate') }}" method="post">
+                    @csrf
                     <div class="mb-3 ">
                         <label class="form-label fw-normal">Email address</label>
                         <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
@@ -20,7 +21,6 @@
                         <input type="checkbox" class="form-check-input" name="rememberMe">
                         <label class="form-check-label">Remember Me</label>
                     </div>
-
 
 
                     <div class="d-flex justify-content-center">

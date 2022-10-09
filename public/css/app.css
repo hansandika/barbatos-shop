@@ -1,1 +1,28 @@
+@layer utilities {
 
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    color: grey;
+}
+
+::-webkit-scrollbar-track:horizontal {
+    background: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: rgb(157, 154, 154);
+    border-radius: 8px;
+}
