@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoutriesTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCoutriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coutries', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('country_code');
-            $table->char('country_code', 2);
+            $table->string("product_name");
+            $table->foreignId("product_category_id")->constrained("product_categories");
+            $table->string("product_description");
+            $table->text("product_image");
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCoutriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coutries');
+        Schema::dropIfExists('products');
     }
 }
