@@ -21,6 +21,15 @@ Route::get("/home", function () {
     return view('home');
 });
 
+Route::get("/products", function () {
+    return view('products');
+});
+
+Route::get("/productdetail/{id}", function () {
+    return view('productdetail');
+});
+
+
 Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
 Route::post("/login", [Auth\LoginController::class, "loginValidate"])->name("login.validate");
 
