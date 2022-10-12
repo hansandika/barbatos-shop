@@ -29,6 +29,9 @@ Route::get("/productdetail/{id}", function () {
     return view('productdetail');
 });
 
+Route::get("/manage", function () {
+    return view('admin/manage_product');
+});
 
 Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
 Route::post("/login", [Auth\LoginController::class, "loginValidate"])->name("login.validate");

@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-white">
+<nav class="navbar navbar-expand-lg bg-white shadow-sm">
     <div class="container">
         <div class="d-flex">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="/home">Barbatos Shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavLightDropdown"
                 aria-controls="navbarNavLightDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

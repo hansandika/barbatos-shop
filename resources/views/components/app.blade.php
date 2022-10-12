@@ -22,7 +22,7 @@
     </script>
 </head>
 
-<body class="bg-light">
+<body style="background:rgb(200, 200, 200)">
 
     <div class="">
         <div class="">
