@@ -17,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [Auth\LoginController::class, "index"])->name("login.show");
 
-Route::get("/home", function () {
-    return view('home');
-});
-
 Route::get("/products", function () {
     return view('products');
 });
@@ -32,6 +28,9 @@ Route::get("/productdetail/{id}", function () {
 Route::get("/manage", function () {
     return view('admin/manage_product');
 });
+
+Route::get("/home", [HomeController::class, "index"])->name("home.show");
+Route::resource('products', ProductController::class);
 
 Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
 Route::post("/login", [Auth\LoginController::class, "loginValidate"])->name("login.validate");
