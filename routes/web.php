@@ -40,7 +40,17 @@ Route::get("/manage", function () {
     return view('admin/manage_product');
 });
 
-Route::get("/home", [HomeController::class, "index"])->name("home.show");
+Route::get("/home", function () {
+    return view('home');
+});
+Route::get("/cart", function () {
+    return view('auth/cart');
+});
+Route::get("/history", function () {
+    return view('auth/history');
+});
+
+// Route::get("/home", [HomeController::class, "index"])->name("home.show");
 Route::resource('products', ProductController::class);
 
 Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
