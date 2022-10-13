@@ -17,12 +17,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", [Auth\LoginController::class, "index"])->name("login.show");
 
+Route::get("/profile", function () {
+    return view("auth/profile");
+});
+
+Route::get("/update", function () {
+    return view('admin/update_product');
+});
+Route::get("/add", function () {
+    return view('admin/add_product');
+});
+
 Route::get("/products", function () {
-    return view('products');
+    return view('products/products');
 });
 
 Route::get("/productdetail/{id}", function () {
-    return view('productdetail');
+    return view('products/product_detail');
 });
 
 Route::get("/manage", function () {
