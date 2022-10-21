@@ -1,4 +1,4 @@
-<x-app>
+<x-app-layout title="Cart">
     <div style="margin-right:300px; margin-left:300px;">
         <div style="margin-top:40px; padding-bottom:100px;">
             @for ($i = 0; $i <= 5; $i++)
@@ -31,18 +31,18 @@
             @endfor
         </div>
     </div>
-</x-app>
-<div class="d-flex align-items-center shadow-lg"
-    style="bottom:0; background:white; height:60px; position: fixed; width:100vw; ">
-    <div class="d-flex justify-content-center align-items-center"
-        style="margin-right:300px; margin-left:300px; width:100vw;">
-        <div style="padding-right: 50px;">
-            Total Price: IDR {{ 12384734 }}
-        </div>
-        <div>
-            <button class="btn btn-outline-success">
-                Purchase
-            </button>
+    <div class="d-flex align-items-center shadow-lg"
+        style="bottom:0; background:white; height:60px; position: fixed; width:100vw; ">
+        <div class="d-flex justify-content-center align-items-center"
+            style="margin-right:300px; margin-left:300px; width:100vw;">
+            <div style="padding-right: 50px;">
+                Total Price: IDR {{ 12384734 }}
+            </div>
+            <div>
+                <button class="btn btn-outline-success">
+                    Purchase
+                </button>
+            </div>
         </div>
     </div>
-</div>
+</x-app-layout>

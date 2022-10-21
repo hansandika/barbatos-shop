@@ -1,15 +1,12 @@
-<x-app>
+<x-app-layout title="Create Product">
     <div style="margin-top:40px; margin-left:360px; margin-right:360px; margin-bottom:300px;">
         <div>
             <button class="btn btn-secondary">
                 Back
             </button>
         </div>
-
-
-        <form action="">
+        <form action="" method="POST">
             @csrf
-
             <div style="margin-top:20px;background:rgb(228, 228, 228); height:40px; font-weight:600;"
                 class="p-4 d-flex align-items-center">
                 Add Product
@@ -64,4 +61,4 @@
             </div>
         </form>
     </div>
-</x-app>
+</x-app-layout>

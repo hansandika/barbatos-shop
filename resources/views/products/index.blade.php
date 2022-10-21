@@ -1,4 +1,4 @@
-<x-app>
+<x-app-layout title="List Products">
     <div style="margin-top:32px; margin-left: 100px; margin-right:100px; width:full; background:white">
         {{-- Category --}}
         <div style="background:rgb(228, 228, 228); height:40px; font-weight:600;" class="p-4 d-flex align-items-center">
@@ -26,4 +26,4 @@
     <div class="mt-5" style="text-align:right">
         Pagination
     </div>
-</x-app>
+</x-app-layout>

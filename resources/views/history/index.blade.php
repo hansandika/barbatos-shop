@@ -1,4 +1,4 @@
-<x-app>
+<x-app-layout title="History">
     <div style="margin-left:500px; margin-right:500px;">
         <div style="margin-top:20px;background:rgb(157, 207, 251); height:40px; font-weight:600; color:rgb(53, 161, 255)"
             class="p-4 d-flex align-items-center">
@@ -40,4 +40,4 @@
             </table>
         </div>
     </div>
-</x-app>
+</x-app-layout>

@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coutry extends Model
+class Country extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'country_name',
+        'country_code',
+    ];
 
     public function users()
     {

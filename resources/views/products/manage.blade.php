@@ -1,4 +1,4 @@
-<x-app>
+<x-app-layout title="Manage Product">
     <div style="margin-left:360px; margin-right:360px; margin-top:40px;">
         {{-- Search bar & add button --}}
         <div class="d-flex justify-content-between">
@@ -64,4 +64,4 @@
 
     </div>
 
-</x-app>
+    </x-app>

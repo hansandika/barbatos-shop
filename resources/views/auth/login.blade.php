@@ -1,16 +1,16 @@
-<x-app>
-    <div class="d-flex justify-content-center align-items-center vh-100">
+<x-app-layout title="Login">
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div>
             <div class="fw-bold d-flex justify-content-center bg-secondary align-items-center" style="height:60px;">
                 Login
             </div>
-            <div style=" background:white;" class="p-5">
+            <div class="bg-white p-5">
                 <form class="" style="width:400px;" action="{{ route('login.validate') }}" method="post">
                     @csrf
                     <div class="mb-3 ">
                         <label class="form-label fw-normal">Email address</label>
-                        <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
-                            placeholder="Enter Your Email" required>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Your Email"
+                            required>
                     </div>
                     <div class="mb-3 ">
                         <label class="form-label fw-normal">Password</label>
@@ -18,11 +18,9 @@
                             required>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" name="rememberMe">
+                        <input type="checkbox" class="form-check-input" name="remember-me">
                         <label class="form-check-label">Remember Me</label>
                     </div>
-
-
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-outline-secondary" style="width:160px;">Login</button>
                     </div>
@@ -33,4 +31,4 @@
             </div>
         </div>
     </div>
-</x-app>
+</x-app-layout>
