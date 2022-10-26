@@ -6,6 +6,7 @@
             </div>
             <div class="bg-white p-5">
                 <form action="{{ route('register.store') }}" method="POST" style="width:400px;">
+                    @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label fw-normal">Name</label>
                         <input type="text" id="name" class="form-control" placeholder="Enter Your Name"
