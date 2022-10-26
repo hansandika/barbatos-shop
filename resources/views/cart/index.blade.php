@@ -1,48 +1,59 @@
 <x-app-layout title="Cart">
-    <div style="margin-right:300px; margin-left:300px;">
-        <div style="margin-top:40px; padding-bottom:100px;">
-            @for ($i = 0; $i <= 5; $i++)
-                <div class="d-flex" style="background:rgb(255, 255, 255); width:100%; margin-bottom: 12px;">
-                    <img style="width:180px" src="{{ asset('image/laptop.jpg') }}" alt="Card image cap">
-                    <div class="d-flex justify-content-between" style=" padding:10px; width:100%;">
+    <div class="py-3 d-flex justify-content-center align-items-center">
+        <div style="width: 780px">
+            @forelse ($cartDetails as $cartDetail)
+                <div class="d-flex bg-white w-100 mb-3">
+                    <img style="width:180px; height: 180px; object-fit: cover" src="{{ $cartDetail->product->image }}"
+                        alt="Card image cap">
+                    <div class="d-flex justify-content-between w-100 p-3">
                         <div>
-                            <div style="font-weight: 600;  font-size: 24px;">
-                                {{ Str::limit('Asus Zenbook 14 UX425EA', 16) }}
+                            <div class="fw-semibold fs-3">
+                                {{ Str::limit($cartDetail->product->product_name, 16) }}
                             </div>
                             <div class="mt-2">
-                                Quantity: {{ 4 }}
+                                Quantity: {{ $cartDetail->quantity }}
                             </div>
                             <div class="mt-3">
-                                Total Price: IDR {{ 15000000 }}
+                                Total Price: IDR {{ $cartDetail->quantity * $cartDetail->product->product_price }}
                             </div>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                    <path
-                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z">
-                                    </path>
-                                </svg>
-                            </button>
+                            <form
+                                action="{{ route('cart-detail.destroy', ['cart' => $cart->id, 'product' => $cartDetail->product->id]) }}"
+                                method="POST">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="bi bi-trash-fill"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @empty
+                <div class="alert alert-danger" role="alert">
+                    No Item in Your Cart
+                </div>
+            @endforelse
         </div>
     </div>
-    <div class="d-flex align-items-center shadow-lg"
-        style="bottom:0; background:white; height:60px; position: fixed; width:100vw; ">
-        <div class="d-flex justify-content-center align-items-center"
-            style="margin-right:300px; margin-left:300px; width:100vw;">
-            <div style="padding-right: 50px;">
-                Total Price: IDR {{ 12384734 }}
-            </div>
+    <div class="d-flex align-items-center justify-content-center shadow-lg bg-white min-vw-100 position-fixed bottom-0"
+        style="height:60px;">
+        <div class="d-flex align-items-center gap-5">
             <div>
-                <button class="btn btn-outline-success">
-                    Purchase
-                </button>
+                Total Price: IDR {{ $totalPrice }}
             </div>
+            @if ($cart && $cart->cartDetails)
+                <div>
+                    <form action="{{ route('cart.destroy', $cart->id) }}" method="POST">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-outline-success" type="submit">
+                            Purchase
+                        </button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

@@ -14,8 +14,8 @@ class CreateCartDetailsTable extends Migration
     public function up()
     {
         Schema::create('cart_details', function (Blueprint $table) {
-            $table->foreignId('cart_id')->constrained('carts');
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('cart_id')->constrained('carts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity');
             $table->primary(['cart_id', 'product_id']);
             $table->timestamps();

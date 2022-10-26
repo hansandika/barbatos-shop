@@ -9,6 +9,20 @@ class Cart extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['user_id'];
+
+    public const VALIDATION_RULES = [
+        'product_id' => [
+            'required',
+            'exists:products,id'
+        ],
+        'quantity' => [
+            'required',
+            'numeric',
+            'min:1'
+        ]
+    ];
+
     public function products()
     {
         return $this->belongsToMany(Product::class);

@@ -1,52 +1,35 @@
 <x-app-layout title="Profile">
-    <div style="margin-left:500px; margin-right:500px;">
-        <div style="margin-top:20px;background:rgb(228, 228, 228); height:40px; font-weight:600;"
-            class="p-4 d-flex align-items-center justify-content-center">
-            Profile
-        </div>
-        <div class="bg-white p-3">
-            <div class="mb-3">
-                <div class="mb-1">
-                    Name
-                </div>
-                <div>
-                    <input class="form-control" type="text" name="name" value="{{ 0 }}" required disabled>
-                </div>
+    <div class="container pt-5 d-flex justify-content-center align-items-center min-vh-90">
+        <div class="bg-white" style="width:500px">
+            <div style="background-color:rgb(247, 247, 247); height:40px;"
+                class="p-4 d-flex align-items-center fw-semibold justify-content-center">
+                Profile
             </div>
-            <div class="mb-3">
-                <div class="mb-1">
-                    Email
-                </div>
-                <div>
-                    <input class="form-control" type="text" name="name" value="{{ 0 }}" required
+            <div class="bg-white p-3">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}"
                         disabled>
                 </div>
-            </div>
-            <div class="mb-3">
-                <div class="mb-1">
-                    Gender
-                </div>
-                <div>
-                    <input class="form-control" type="text" name="name" value="{{ 0 }}" required
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}"
                         disabled>
                 </div>
-            </div>
-            <div class="mb-3">
-                <div class="mb-1">
-                    Date of Birth
+                <div class="mb-3">
+                    <label for="gender" class="form-label fw-normal">Gender</label>
+                    <input type="text" class="form-control" id="gender" name="gender"
+                        value="{{ $user->gender }}"disabled>
                 </div>
-                <div>
-                    <input class="form-control" type="text" name="name" value="{{ 0 }}" required
-                        disabled>
+                <div class="mb-3">
+                    <label for="dateOfBirth" class="form-label fw-normal">Date of Birth</label>
+                    <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth"
+                        value="{{ $user->date_of_birth }}"disabled>
                 </div>
-            </div>
-            <div class="mb-3">
-                <div class="mb-1">
-                    Country
-                </div>
-                <div>
-                    <input class="form-control" type="text" name="name" value="{{ 0 }}" required
-                        disabled>
+                <div class="mb-3">
+                    <label for="country" class="form-label fw-normal">Country</label>
+                    <input type="text" class="form-control" id="country" name="country"
+                        value="{{ $user->country->country_name }}"disabled>
                 </div>
             </div>
         </div>

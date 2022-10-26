@@ -4,22 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(['index', 'show']);
+        $this->middleware('admin')->only('manageProduct');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     public function index(Request $request)
     {
-        $products = Product::with('productCategory');
-        if ($request->category) {
-            $products = $products->where('product_category_id', $request->category);
-        }
-        $products = $products->get();
+        $products = Product::with('category')->whereHas('category', function ($query) use ($request) {
+            if ($request->has('category')) {
+                $query->where('category_name', $request->category);
+            }
+        })->paginate(10)->withQueryString();
+
         return view('products.index', compact("products"));
     }
 
@@ -30,37 +35,85 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        $categories = ProductCategory::get();
+        return view('products.create', compact("categories"));
     }
 
     public function store(StoreProductRequest $request)
     {
-        $attr = $request->all();
-        $attr['product_image'] = $request->file('image')->store('images');
-        $attr['product_category_id'] = $request->category;
-        $attr['product_name'] = $request->name;
-        $attr['product_price'] = $request->price;
-        $attr['product_description'] = $request->detail;
+        DB::beginTransaction();
+        try {
+            $attr = $request->all();
 
-        Product::create($attr);
+            $file = $request->file('photo');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/'), $filename);
+            $attr['product_image'] = $filename;
 
-        return redirect()->route('products.index');
+            $attr['product_category_id'] = $request->category;
+            $attr['product_name'] = $request->name;
+            $attr['product_price'] = $request->price;
+            $attr['product_description'] = $request->detail;
+
+            Product::create($attr);
+
+            DB::commit();
+            return redirect()->route('products.manage')->with('success', 'Product created successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     public function edit(Product $product)
     {
-        return view('products.edit', compact("product"));
+        $categories = ProductCategory::get();
+        return view('products.edit', compact("product", 'categories'));
     }
 
     public function update(StoreProductRequest $request, Product $product)
     {
-        $attr['product_image'] = $request->file('image')->store('images');
-        $attr['product_category_id'] = $request->category;
-        $attr['product_name'] = $request->name;
-        $attr['product_price'] = $request->price;
-        $attr['product_description'] = $request->detail;
+        DB::beginTransaction();
 
-        $product->update($attr);
-        return redirect()->route('products.index');
+        try {
+            $attr = $request->all();
+
+            $file = $request->file('photo');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('storage/products/'), $filename);
+            $attr['product_image'] = $filename;
+
+            $attr['product_category_id'] = $request->category;
+            $attr['product_name'] = $request->name;
+            $attr['product_price'] = $request->price;
+            $attr['product_description'] = $request->detail;
+
+            Storage::delete('public/products/' . $product->product_image);
+
+            $product->update($attr);
+            DB::commit();
+            return redirect()->route('products.manage')->with('success', 'Product updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function destroy(Product $product)
+    {
+        Storage::delete('public/products/' . $product->product_image);
+
+        $product->delete();
+        return redirect()->route('products.manage')->with('success', 'Product deleted successfully');
+    }
+
+    public function manageProduct(Request $request)
+    {
+        $products = Product::with('category');
+        if ($request->has('search')) {
+            $products = $products->where('product_name', 'like', '%' . $request->search . '%');
+        }
+        $products = $products->paginate(10)->withQueryString();
+        return view('products.manage', compact("products"));
     }
 }

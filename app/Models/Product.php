@@ -32,15 +32,20 @@ class Product extends Model
             'required',
             'numeric'
         ],
-        'image' => [
+        'photo' => [
             'required',
             'image',
             'mimes:jpeg,png,jpg',
         ]
     ];
 
+    public function getImageAttribute()
+    {
+        return asset('storage/products/' . $this->product_image);
+    }
+
     public function category()
     {
-        return $this->belongsTo(ProductcCategory::class);
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 }

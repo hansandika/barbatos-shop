@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['Male', 'Female']);
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->timestamp("date_of_birth");
+            $table->foreignId('country_id')->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

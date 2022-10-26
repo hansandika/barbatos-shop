@@ -15,18 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", [Auth\LoginController::class, "index"])->name("login.show");
+Route::get("/", HomeController::class)->name("home.index");
 
-Route::get("/profile", function () {
-    return view("auth/profile");
-});
-
-Route::get("/home", HomeController::class)->name("home.show");
-
+Route::get("/products/manage-product", [ProductController::class, "manageProduct"])->name("products.manage");
 Route::resource('products', ProductController::class);
 
-Route::get("/login", [Auth\LoginController::class, "index"])->name("login.show");
-Route::post("/login", [Auth\LoginController::class, "loginValidate"])->name("login.validate");
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+Route::delete("/cart/{cart}", [CartController::class, "destroy"])->name("cart.destroy");
+Route::delete('/cart-details/{cart}/{product}', [CartDetailController::class, 'destroy'])->name('cart-detail.destroy');
+
+Route::get('/transactions', [TransactionController::class, 'index'])->name('transaction.index');
+
+Route::get("/profile", UserController::class)->name("profile.index");
+
+Route::get("/login", [Auth\LoginController::class, "index"])->name("login.index");
+Route::post("/login", [Auth\LoginController::class, "login"])->name("login.validate");
 
 Route::get("/register", [Auth\RegisterController::class, "index"])->name("register.show");
 Route::post("/register", [Auth\RegisterController::class, "store"])->name("register.store");

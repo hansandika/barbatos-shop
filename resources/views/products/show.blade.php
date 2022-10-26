@@ -1,27 +1,31 @@
 <x-app-layout title='{{ $product->product_name }}'>
-    <div class="d-flex justify-content-center align-items-center container min-vh-100">
-        <div class="d-flex gap-4 px-2 align-items-center bg-white" style="width:800px; height:400px;">
-            <img style="width:200px; height:200px;" src="{{ asset('image/laptop.jpg') }}" alt="Card image cap">
-            <form action="" method="POST">
+    <div class="d-flex justify-content-center align-items-center container">
+        <div class="d-flex gap-4 px-2 align-items-center bg-white mt-5" style="width:800px; height:350px;">
+            <img style="width:200px; height:200px; object-fit: cover" class="img-thumbnail" src="{{ $product->image }}"
+                alt="Card image cap">
+            <form action="{{ route('cart.store') }}" method="POST">
                 @csrf
-                <div class="text-dark fs-3 fw-bol">
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <div class="text-dark fs-3 fw-bold">
                     {{ $product->product_name }}
                 </div>
-                <div>
+                <div class="mt-3">
                     <div class="d-flex">
                         <div class="opacity-75" style="width:120px;">
                             Detail
                         </div>
                         <div class="w-100">
-                            {{ $product->product_description }}
+                            <p>{{ $product->product_description }}</p>
                         </div>
                     </div>
-                    <div class="d-flex opacity-75">
-                        <div style="width:120px;">
+                    <div class="d-flex">
+                        <div class="opacity-75" style="width:120px;">
                             Price
                         </div>
                         <div class="w-100">
-                            IDR {{ $product->product_price }}
+                            <p>
+                                IDR {{ $product->product_price }}
+                            </p>
                         </div>
                     </div>
                     @auth
@@ -29,7 +33,7 @@
                             <div style="width:120px;">
                                 Qty
                             </div>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="number" name="quantity" required>
                         </div>
                     @endauth
                 </div>

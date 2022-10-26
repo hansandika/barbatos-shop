@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests;
 
+use App\Models\Cart;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class LoginRequest extends FormRequest
+class CartRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,20 +15,17 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
      * Get the validation rules that apply to the request.
-     * @param string $email
-     * @param string $password 
-     * @return array<string, mixed>
+     *
+     * @return array
      */
     public function rules()
     {
-        return [
-            'email' => ['required'],
-            'password' => ['required']
-        ];
+        $rules = Cart::VALIDATION_RULES;
+        return $rules;
     }
 }

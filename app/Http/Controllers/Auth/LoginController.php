@@ -8,14 +8,25 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('logout');
+    }
+
     public function index()
     {
         return view('auth.login');
     }
 
-    public function loginValidate(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
-        if (Auth::attempt(['email' => request('email'), 'password' => $request->password], $request->remember)) {
+        if (Auth::viaRemember()) {
+            Auth::login(Auth::user());
+            return redirect('/');
+        }
+
+        $remember = $request->remember ? true : false;
+        if (Auth::attempt(['email' => request('email'), 'password' => $request->password], $remember)) {
             return redirect('/')->with('success-info', 'Login Successfully');
         }
 

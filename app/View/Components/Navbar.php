@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\ProductCategory;
 use Illuminate\View\Component;
 
 class Navbar extends Component
@@ -11,9 +12,10 @@ class Navbar extends Component
      *
      * @return void
      */
+    protected $categories;
     public function __construct()
     {
-        //
+        $this->categories = ProductCategory::get();
     }
 
     /**
@@ -23,6 +25,8 @@ class Navbar extends Component
      */
     public function render()
     {
-        return view('layouts.navbar');
+        return view('layouts.navbar', [
+            "categories" => $this->categories
+        ]);
     }
 }
