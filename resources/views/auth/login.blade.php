@@ -9,13 +9,22 @@
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label fw-normal">Email address</label>
-                        <input type="email" id="email" class="form-control" name="email"
-                            placeholder="Enter Your Email" required>
+                        <input type="email" id="email" class="form-control @error('email')is-invalid @enderror"
+                            name="email" placeholder="Enter Your Email" required>
+                        @error('email')
+                            <p class="mt-2 text-danger"><span class="fw-medium">Oops! </span>{{ $message }}
+                            </p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label fw-normal">Password</label>
-                        <input type="password" id="password" class="form-control" name="password"
+                        <input type="password" id="password"
+                            class="form-control @error('password')is-invalid @enderror" name="password"
                             placeholder="Enter Your Password" required>
+                        @error('password')
+                            <p class="mt-2 text-danger"><span class="fw-medium">Oops! </span>{{ $message }}
+                            </p>
+                        @enderror
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" id="remember" class="form-check-input" name="remember">
