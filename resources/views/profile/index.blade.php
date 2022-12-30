@@ -1,35 +1,51 @@
 <x-app-layout title="Profile">
-    <div class="container pt-5 d-flex justify-content-center align-items-center min-vh-90">
-        <div class="bg-white" style="width:500px">
-            <div style="background-color:rgb(247, 247, 247); height:40px;"
-                class="p-4 d-flex align-items-center fw-semibold justify-content-center">
-                Profile
+    <div class="w-full screen flex items-center justify-center">
+        <div
+            class="w-full max-w-sm p-6 mx-6 bg-white border border-gray-200 rounded-lg shadow-md md:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <div class="flex justify-center mb-5">
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">Profile</h5>
             </div>
-            <div class="bg-white p-3">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}"
-                        disabled>
+
+            <div>
+                {{-- Name --}}
+                <div>
+                    <label for="name"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" id="disabled-input" aria-label="disabled input"
+                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value="{{ $user->name }}" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}"
-                        disabled>
+                {{-- Email --}}
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Email</label>
+                    <input type="text" id="disabled-input" aria-label="disabled input"
+                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value="{{ $user->email }}" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="gender" class="form-label fw-normal">Gender</label>
-                    <input type="text" class="form-control" id="gender" name="gender"
-                        value="{{ $user->gender }}"disabled>
+                {{-- Gender --}}
+                <div>
+                    <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Gender</label>
+                    <input type="text" id="disabled-input" aria-label="disabled input"
+                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value="{{ $user->gender }}" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="dateOfBirth" class="form-label fw-normal">Date of Birth</label>
-                    <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth"
-                        value="{{ $user->date_of_birth }}"disabled>
+                {{-- Date of Birth --}}
+                <div>
+                    <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Date of Birth</label>
+                    <input type="text" id="disabled-input" aria-label="disabled input"
+                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value="{{ $user->date_of_birth }}" disabled>
                 </div>
-                <div class="mb-3">
-                    <label for="country" class="form-label fw-normal">Country</label>
-                    <input type="text" class="form-control" id="country" name="country"
-                        value="{{ $user->country->country_name }}"disabled>
+                {{-- Country --}}
+                <div>
+                    <label for="country" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Country</label>
+                    <input type="text" id="disabled-input" aria-label="disabled input"
+                        class="mb-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value="{{ $user->country->country_name }}" disabled>
                 </div>
             </div>
         </div>

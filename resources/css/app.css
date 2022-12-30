@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    overflow: overlay;
+}
+
+@layer utilities {
+
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(75, 144, 159, 0);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 163, 192, 0.5);
+    border-radius: 8px;
+}
+
+.screen {
+    height: calc(100vh - 104px);
+}
+
+@media screen and (min-width: 768px) {
+    .screen {
+        height: calc(100vh - 72px);
+    }
+}
