@@ -40,8 +40,19 @@ body {
     height: calc(100vh - 104px);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
     .screen {
-        height: calc(100vh - 72px);
+        height: min-content;
+    }
+
+}
+
+.screenL {
+    min-height: calc(100vh - 104px);
+}
+
+@media screen and (min-width: 768px) {
+    .screenL {
+        min-height: calc(100vh - 72px);
     }
 }

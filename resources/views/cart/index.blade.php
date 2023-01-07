@@ -1,10 +1,10 @@
 <x-app-layout title="Cart">
-    <div class=" flex flex-wrap justify-center pt-10 px-5  md:px-10">
+    <div class=" flex flex-wrap screenL justify-center pt-5 px-5 pb-[100px] md:px-10">
         @forelse ($cartDetails as $cartDetail)
             <div
-                class="m-2 w-full max-w-[960px] max-h-[500px] border  bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                class="m-2 w-full max-w-[960px] h-max border bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <div class="w-full flex">
-                    <img class="object-cover  h-[150px] sm:h-[300px] max-w-[300px] rounded-tl-lg sm:rounded-bl-lg"
+                    <img class="object-cover h-[150px] sm:h-[300px] w-[150px] sm:w-[300px] rounded-tl-lg sm:rounded-bl-lg"
                         src="{{ $cartDetail->product->image }}" alt="product image" />
                     <div class="p-4 w-full flex flex-col justify-between max-w-[768px]">
                         <h5
@@ -54,7 +54,7 @@
                 </div>
             </div>
         @empty
-            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 w-full"
+            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 w-full h-max"
                 role="alert">
                 <span class="font-medium">No item in your cart</span>
             </div>

@@ -1,5 +1,5 @@
 <x-app-layout title="Manage Product">
-    <div class="py-3 px-5 md:px-10 d-flex justify-content-center align-items-center">
+    <div class="py-3 px-5 md:px-10 screenL d-flex justify-content-center align-items-center">
         <div>
             <div class="flex flex-col sm:flex-row gap-4 items-center">
                 <form class="w-full" action="{{ route('products.manage') }}" method="GET">
@@ -33,7 +33,8 @@
                 @forelse ($products as $product)
                     <div
                         class=" w-[340px] md:w-[388px] h-[460px] md:h-[440px] flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <img class="p-4 h-[340px] w-full" src="{{ $product->image }}" alt="product image" />
+                        <img class="object-cover  p-4 h-[340px] w-full" src="{{ $product->image }}"
+                            alt="product image" />
                         <div class="h-[100px] px-5 pb-5">
                             <h5
                                 class="truncate mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">

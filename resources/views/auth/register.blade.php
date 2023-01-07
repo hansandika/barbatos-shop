@@ -1,8 +1,8 @@
 <x-app-layout title="Register">
-    <div class="flex screen items-center justify-center">
+    <div class="flex screen sm:min-h-min items-center justify-center">
         <div
-            class=" w-full max-w-[360px] md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md  md:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <form class="space-y-4 md:space-y-6 mb-4 md:mb-6" action="{{ route('register.store') }}" method="POST">
+            class="w-full my-4  sm:screen max-w-[360px] md:max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <form class="space-y-2 md:space-y-3 mb-4 md:mb-6" action="{{ route('register.store') }}" method="POST">
                 @csrf
                 <h5 class="text-xl font-medium mt-0 text-gray-900 dark:text-white">Register</h5>
                 {{-- Name --}}

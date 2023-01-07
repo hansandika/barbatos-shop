@@ -1,10 +1,10 @@
 <x-app-layout title='{{ $product->product_name }}'>
-    <div class="flex screen w-full items-center justify-center px-5">
+    <div class="flex screenL w-full items-center justify-center px-5">
         <form action="{{ route('cart.store') }}" method="POST">
             @csrf
             <div
                 class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-4xl  dark:border-gray-700 dark:bg-gray-800 ">
-                <img class="object-cover rounded-t-lg h-[340px] sm:h-[396px] max-w-[396px] md:max-w-2xl md:rounded-none md:rounded-l-lg"
+                <img class="object-cover rounded-t-lg h-[340px] sm:h-[396px] w-[340px] sm:w-[396px] md:rounded-none md:rounded-l-lg"
                     src="{{ $product->image }}" alt="Card image">
                 <div class="flex flex-col w-full justify-between p-3 sm:p-4 leading-normal">
                     <input type="hidden" name="product_id" value="{{ $product->id }}">

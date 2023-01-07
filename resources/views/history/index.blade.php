@@ -1,11 +1,11 @@
 <x-app-layout title="History">
 
 
-    <div class="screen w-full pt-5 sm:pt-0 sm:flex justify-center items-center">
-        <div>
+    <div class="screenL w-full sm:flex justify-center">
+        <div class="flex flex-col gap-5 py-5">
             @forelse($transactions as $transaction)
                 <div
-                    class="mx-5 max-w-[720px] overflow-x-auto border-2 dark:border-gray-800 relative shadow-md rounded-lg mb-10">
+                    class="mx-5 max-w-[720px] overflow-x-auto border-2 dark:border-gray-800 relative shadow-md rounded-lg">
                     <table class="w-full text-xs sm:text-sm text-left text-gray-500 dark:text-gray-400 ">
                         <thead class="text-xs  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>

@@ -1,5 +1,5 @@
 <x-app-layout title="Home">
-    <div class="px-4 md:px-10">
+    <div class="screenL pb-1 px-4 md:px-10">
 
         <form class="flex" action="{{ route('home.index') }}" method="GET">
             <div class="py-4 md:py-8 w-full">
@@ -38,7 +38,7 @@
                                     <a href="{{ route('products.show', $product->id) }}" class=" cursor-pointer">
                                         <div
                                             class="w-[340px] md:w-[388px] h-[460px] md:h-[440px] flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                            <img class="p-4 h-[340px] w-full" src="{{ $product->image }}"
+                                            <img class="object-cover  p-4 h-[340px] w-full" src="{{ $product->image }}"
                                                 alt="product image" />
                                             <div class="h-[120px] px-5 pb-5">
                                                 <div class="w-full">
@@ -70,15 +70,17 @@
                 @endforeach
             @else
                 <div class="w-full  dark:bg-gray-900">
-                    <p class="font-semibold text-gray-700 dark:text-gray-200 text-xl md:text-3xl mb-2 mt-3">Search
+                    <p class="font-semibold text-gray-700 dark:text-gray-200 text-xl md:text-3xl  mt-3 sm:mb-5">
+                        Search
                         Results
                     </p>
-                    <div class="flex flex-wrap justify-center md:justify-start">
+                    <div class="flex flex-wrap pb-4 gap-4 justify-center md:justify-start">
                         @forelse ($products as $product)
                             <a href="{{ route('products.show', $product->id) }}" class="cursor-pointer">
                                 <div
                                     class="w-[340px] md:w-[388px] h-[460px] md:h-[440px] flex flex-col justify-between max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-                                    <img class="p-4 h-[340px] w-full" src="{{ $product->image }}" alt="product image" />
+                                    <img class="object-cover  p-4 h-[340px] w-full" src="{{ $product->image }}"
+                                        alt="product image" />
                                     <div class="h-[120px] px-5 pb-5">
                                         <div class="w-full">
                                             <h5
